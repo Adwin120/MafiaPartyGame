@@ -1,5 +1,5 @@
 import SwiftUICore
-enum Fraction: Codable {
+enum Fraction: Hashable, Codable {
     case Mafia
     case Town
     case Syndicate

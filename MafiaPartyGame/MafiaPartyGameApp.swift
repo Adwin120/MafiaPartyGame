@@ -25,8 +25,7 @@ struct MafiaPartyGameApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainMenuView()
         }
-        .modelContainer(sharedModelContainer)
     }
 }
