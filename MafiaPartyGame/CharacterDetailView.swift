@@ -11,7 +11,7 @@ struct CharacterDetailView: View {
     var character: Character
     var body: some View {
         VStack {
-            Text(character.image)
+            Image(character.image)
             Text(character.name)
             Text(character.descriptionText)
         }.background(character.fraction.color)
@@ -19,5 +19,5 @@ struct CharacterDetailView: View {
 }
 
 #Preview {
-    CharacterDetailView(character: Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: ""))
+    CharacterDetailView(character: Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "pudzian"))
 }

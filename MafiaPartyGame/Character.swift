@@ -7,6 +7,5 @@ struct Character: Hashable, Codable, Identifiable {
     var descriptionText: String
     var fraction: Fraction
     
-    // TODO change to proper data type
     var image: String
 }
