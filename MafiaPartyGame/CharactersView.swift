@@ -15,20 +15,14 @@ struct CharactersView: View {
     ]
     
     var body: some View {
-        NavigationSplitView {
-            List(characters) {character in
-                NavigationLink(character.name, value: character).background(character.fraction.color)
-            }
-            .navigationDestination(for: Character.self) { character in
-                CharacterDetailView(character: character)
-            }
-        } detail: {
-//            I have no idea what this whole detail thing is
-            Text("pudzian")
-        }
+        List(characters) {character in
+            NavigationLink(character.name, value: character).background(character.fraction.color)
+        }   
     }
 }
 
 #Preview {
-    CharactersView()
+    NavigationStack {
+        CharactersView()
+    }
 }

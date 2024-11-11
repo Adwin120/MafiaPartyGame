@@ -11,8 +11,10 @@ import SwiftUI
 
 struct MainMenuView: View {
     
+    @State var path: NavigationPath = []
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack(alignment: .leading) {
                 Text("Play")
                 NavigationLink {CharactersView()} label: {Text("Characters")}
@@ -21,6 +23,9 @@ struct MainMenuView: View {
                 Text("App Info")
             }
             .navigationTitle("Mafia - Party Game")
+        }
+        .navigationDestination(for: Character.self) { character in
+            CharacterDetailView(character: character)
         }
     }
 }
