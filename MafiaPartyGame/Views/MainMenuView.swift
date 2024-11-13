@@ -16,19 +16,21 @@ struct MainMenuView: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack(alignment: .leading) {
-                Text("Play")
+                NavigationLink("Play", value: ViewEnum.Play)
                 NavigationLink("Characters", value: ViewEnum.Characters)
                 NavigationLink("Fractions", value: ViewEnum.Fraction)
-                Text("User")
-                Text("App Info")
+                NavigationLink("User", value: ViewEnum.User)
+                NavigationLink("AppInfo", value: ViewEnum.AppInfo)
             }
             .navigationTitle("Mafia - Party Game")
             .navigationDestination(for: ViewEnum.self) { view in
                     switch view {
+                    case .Play: PlayView()
                     case .Characters: CharactersView()
                     case .Fraction: FractionsView()
+                    case .User: UserView()
+                    case .AppInfo: AppInfoView()
                     default: CharactersView()
-                    
                 }
             }
         }
