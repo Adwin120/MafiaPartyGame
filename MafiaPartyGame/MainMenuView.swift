@@ -18,16 +18,24 @@ struct MainMenuView: View {
             VStack(alignment: .leading) {
                 Text("Play")
                 NavigationLink("Characters", value: ViewEnum.Characters)
-                Text("Fraction")
+                NavigationLink("Fractions", value: ViewEnum.Fraction)
                 Text("User")
                 Text("App Info")
             }
             .navigationTitle("Mafia - Party Game")
-            .navigationDestination(for: ViewEnum.self) {
-                view in CharactersView()
+            .navigationDestination(for: ViewEnum.self) { view in
+                    switch view {
+                    case .Characters: CharactersView()
+                    case .Fraction: FractionsView()
+                    default: CharactersView()
+                    
+                }
             }
             .navigationDestination(for: Character.self) { character in
                 CharacterDetailView(character: character)
+            }
+            .navigationDestination(for: Fraction.self) {
+                fraction in FractionDetailView(fraction: fraction)
             }
         }
     }

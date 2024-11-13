@@ -1,5 +1,5 @@
 import SwiftUICore
-enum Fraction: Hashable, Codable {
+enum Fraction: Hashable, Codable, Identifiable {
     case Mafia
     case Town
     case Syndicate
@@ -10,5 +10,13 @@ enum Fraction: Hashable, Codable {
         case .Town: Color.yellow
         case .Syndicate: Color.blue
         }
+    }
+    
+    var displayName: String {
+        String(describing: self)
+    }
+    
+    var id: String {
+        self.displayName
     }
 }
