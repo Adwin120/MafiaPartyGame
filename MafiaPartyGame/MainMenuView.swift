@@ -11,21 +11,24 @@ import SwiftUI
 
 struct MainMenuView: View {
     
-    @State var path: NavigationPath = []
+    @State var path: NavigationPath = NavigationPath()
 
     var body: some View {
         NavigationStack(path: $path) {
             VStack(alignment: .leading) {
                 Text("Play")
-                NavigationLink {CharactersView()} label: {Text("Characters")}
+                NavigationLink("Characters", value: ViewEnum.Characters)
                 Text("Fraction")
                 Text("User")
                 Text("App Info")
             }
             .navigationTitle("Mafia - Party Game")
-        }
-        .navigationDestination(for: Character.self) { character in
-            CharacterDetailView(character: character)
+            .navigationDestination(for: ViewEnum.self) {
+                view in CharactersView()
+            }
+            .navigationDestination(for: Character.self) { character in
+                CharacterDetailView(character: character)
+            }
         }
     }
 }
