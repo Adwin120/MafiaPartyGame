@@ -31,12 +31,6 @@ struct MainMenuView: View {
                     
                 }
             }
-            .navigationDestination(for: Character.self) { character in
-                CharacterDetailView(character: character)
-            }
-            .navigationDestination(for: Fraction.self) {
-                fraction in FractionDetailView(fraction: fraction)
-            }
         }
     }
 }

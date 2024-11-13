@@ -17,11 +17,14 @@ struct FractionsView: View {
         List(fractions) {fraction in
             NavigationLink(fraction.displayName, value: fraction).background(fraction.color)
         }
+        .navigationDestination(for: Fraction.self) {
+            fraction in FractionDetailView(fraction: fraction)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        CharactersView()
+        FractionsView()
     }
 }

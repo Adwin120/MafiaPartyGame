@@ -10,6 +10,6 @@ import SwiftUI
 struct FractionDetailView: View {
     var fraction: Fraction
     var body: some View {
-        Text(fraction.displayName)
+        Text(fraction.displayName).background(fraction.color)
     }
 }
