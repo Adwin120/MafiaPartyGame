@@ -19,29 +19,34 @@ struct MainMenuView: View {
                 MenuCardView(
                     title: "Play",
                     subtitle: "Mafia",
-                    imageName: "pudzian")
+                    imageName: "pudzian",
+                    fraction: .Mafia)
                 { path.append(ViewEnum.Play) }
                 MenuCardView(
                     title: "Characters",
                     subtitle: "Compedium",
-                    imageName: "pudzian")
+                    imageName: "pudzian",
+                    fraction: .Mafia)
                 { path.append(ViewEnum.Characters) }
                 MenuCardView(
                     title: "Fractions",
                     subtitle: "Compedium",
-                    imageName: "pudzian")
+                    imageName: "pudzian",
+                    fraction: .Mafia)
                 { path.append(ViewEnum.Fraction) }
                 
                 HStack(alignment: .center, spacing: 20) {
                     MenuCardView(
                         title: "User",
                         subtitle: "Settings",
-                        imageName: "pudzian")
+                        imageName: "pudzian",
+                        fraction: .Mafia)
                     { path.append(ViewEnum.User) }
                     MenuCardView(
                         title: "App Info",
                         subtitle: "Settings",
-                        imageName: "pudzian")
+                        imageName: "pudzian",
+                        fraction: .Mafia)
                     { path.append(ViewEnum.AppInfo) }
                 }
             }
