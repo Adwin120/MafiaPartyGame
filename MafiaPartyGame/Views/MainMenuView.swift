@@ -25,7 +25,8 @@ struct MainMenuView: View {
                 MenuCardView(
                     title: "Pudzian",
                     subtitle: "The Strongman",
-                    imageName: "pudzian")
+                    imageName: "pudzian",
+                    fraction: Fraction.Mafia)
                 { path.append(ViewEnum.Play) }
             }
             .navigationTitle("Mafia - Party Game")

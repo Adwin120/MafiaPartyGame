@@ -9,3 +9,8 @@ struct Character: Hashable, Codable, Identifiable {
     
     var image: String
 }
+
+//character example
+extension Character {
+    static let example = Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "mafiaBoss")
+}

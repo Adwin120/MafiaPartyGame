@@ -11,7 +11,19 @@ struct MenuCardView: View {
     let title: String
     let subtitle: String
     let imageName: String
+    let fraction: Fraction
     let onTap: () -> Void
+    
+    private var borderColor: Color {
+            switch fraction {
+            case .Town:
+                return .yellow
+            case .Mafia:
+                return .red
+            case .Syndicate:
+                return .blue
+            }
+        }
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -20,8 +32,9 @@ struct MenuCardView: View {
                 .scaledToFill()
                 .frame( height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.red, lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(borderColor, lineWidth: 2))
                 .shadow(radius: 10)
+                
             Text(title)
                 .font(.custom("AbhayaLibre-Bold", size: 34, relativeTo: .title))
                 .bold()
@@ -44,5 +57,10 @@ struct MenuCardView: View {
 }
 
 #Preview {
-    MenuCardView(title: "Pudzian", subtitle: "The Strongman", imageName: "pudzian") { print("Tapped") }
+    Group {
+        MenuCardView(title: "Cattani", subtitle: "Miasto", imageName: "cattani", fraction: Fraction.Town) { print("Tapped") }
+//        MenuCardView(title: "Szef Mafii", subtitle: "Mafia", imageName: "mafiaBoss", fraction: Fraction.Mafia) { print("Tapped") }
+//        MenuCardView(title: "Szef Mafii", subtitle: "Mafia", imageName: "hunter", fraction: Fraction.Syndicate) { print("Tapped") }
+    }
+    
 }
