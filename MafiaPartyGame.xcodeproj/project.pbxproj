@@ -29,9 +29,46 @@
 		B4EF21D72CC9344F00E62227 /* MafiaPartyGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MafiaPartyGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2D89948B2CF755CC003F9181 /* Exceptions for "MafiaPartyGame" folder in "MafiaPartyGame" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B4EF21BA2CC9344E00E62227 /* MafiaPartyGame */;
+		};
+		2DF11BC02CF74FD900A215E7 /* Exceptions for "MafiaPartyGame" folder in "MafiaPartyGameTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Fonts/AbhayaLibre-Bold.ttf",
+				"Fonts/AbhayaLibre-ExtraBold.ttf",
+				"Fonts/AbhayaLibre-Medium.ttf",
+				"Fonts/AbhayaLibre-Regular.ttf",
+				"Fonts/AbhayaLibre-SemiBold.ttf",
+			);
+			target = B4EF21CC2CC9344F00E62227 /* MafiaPartyGameTests */;
+		};
+		2DF11BC12CF74FD900A215E7 /* Exceptions for "MafiaPartyGame" folder in "MafiaPartyGameUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Fonts/AbhayaLibre-Bold.ttf",
+				"Fonts/AbhayaLibre-ExtraBold.ttf",
+				"Fonts/AbhayaLibre-Medium.ttf",
+				"Fonts/AbhayaLibre-Regular.ttf",
+				"Fonts/AbhayaLibre-SemiBold.ttf",
+			);
+			target = B4EF21D62CC9344F00E62227 /* MafiaPartyGameUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B4EF21BD2CC9344E00E62227 /* MafiaPartyGame */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2D89948B2CF755CC003F9181 /* Exceptions for "MafiaPartyGame" folder in "MafiaPartyGame" target */,
+				2DF11BC02CF74FD900A215E7 /* Exceptions for "MafiaPartyGame" folder in "MafiaPartyGameTests" target */,
+				2DF11BC12CF74FD900A215E7 /* Exceptions for "MafiaPartyGame" folder in "MafiaPartyGameUITests" target */,
+			);
 			path = MafiaPartyGame;
 			sourceTree = "<group>";
 		};
@@ -399,6 +436,7 @@
 				DEVELOPMENT_TEAM = 6J9QUJJGN2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MafiaPartyGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +466,7 @@
 				DEVELOPMENT_TEAM = 6J9QUJJGN2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MafiaPartyGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -21,6 +21,12 @@ struct MainMenuView: View {
                 NavigationLink("Fractions", value: ViewEnum.Fraction)
                 NavigationLink("User", value: ViewEnum.User)
                 NavigationLink("AppInfo", value: ViewEnum.AppInfo)
+                
+                MenuCardView(
+                    title: "Pudzian",
+                    subtitle: "The Strongman",
+                    imageName: "pudzian")
+                { path.append(ViewEnum.Play) }
             }
             .navigationTitle("Mafia - Party Game")
             .navigationDestination(for: ViewEnum.self) { view in

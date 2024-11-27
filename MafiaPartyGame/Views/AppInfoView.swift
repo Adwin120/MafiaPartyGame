@@ -9,7 +9,24 @@ import SwiftUI
 
 struct AppInfoView: View {
     var body: some View {
-        Text("app info")
+        // Z stack
+        ZStack {
+            // background image with height 200 and full width
+            
+            
+            Image("pudzian")
+                .resizable()
+                                .scaledToFill()
+                                .frame(height: 200)
+                                .frame(maxWidth: .infinity)
+                                .clipped()
+            
+                Text("App Info")
+            .font(.title)
+            .bold();
+            
+        }
+        
     }
 }
 
