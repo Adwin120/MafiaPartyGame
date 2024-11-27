@@ -30,7 +30,7 @@ struct MenuCardView: View {
             Image(imageName)
                 .resizable()
                 .scaledToFill()
-                .frame( height: 200)
+                .frame( minHeight: 10 )
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay(RoundedRectangle(cornerRadius: 20).stroke(borderColor, lineWidth: 2))
                 .shadow(radius: 10)
@@ -48,10 +48,11 @@ struct MenuCardView: View {
                 .padding(.bottom, 48)
                     
         }
-        .padding()
+        .contentShape(RoundedRectangle(cornerRadius: 20))
         .onTapGesture {
             onTap()
         }
+        
     }
         
 }

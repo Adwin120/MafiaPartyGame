@@ -16,5 +16,4 @@ enum ViewEnum {
     case Fraction
     case User
     case AppInfo
-    case Settings
 }

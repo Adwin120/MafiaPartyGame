@@ -15,21 +15,38 @@ struct MainMenuView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            VStack(alignment: .leading) {
-                NavigationLink("Play", value: ViewEnum.Play)
-                NavigationLink("Characters", value: ViewEnum.Characters)
-                NavigationLink("Fractions", value: ViewEnum.Fraction)
-                NavigationLink("User", value: ViewEnum.User)
-                NavigationLink("AppInfo", value: ViewEnum.AppInfo)
-                
+            VStack(alignment: .leading, spacing: 20) {
                 MenuCardView(
-                    title: "Pudzian",
-                    subtitle: "The Strongman",
-                    imageName: "pudzian",
-                    fraction: Fraction.Mafia)
+                    title: "Play",
+                    subtitle: "Mafia",
+                    imageName: "pudzian")
                 { path.append(ViewEnum.Play) }
+                MenuCardView(
+                    title: "Characters",
+                    subtitle: "Compedium",
+                    imageName: "pudzian")
+                { path.append(ViewEnum.Characters) }
+                MenuCardView(
+                    title: "Fractions",
+                    subtitle: "Compedium",
+                    imageName: "pudzian")
+                { path.append(ViewEnum.Fraction) }
+                
+                HStack(alignment: .center, spacing: 20) {
+                    MenuCardView(
+                        title: "User",
+                        subtitle: "Settings",
+                        imageName: "pudzian")
+                    { path.append(ViewEnum.User) }
+                    MenuCardView(
+                        title: "App Info",
+                        subtitle: "Settings",
+                        imageName: "pudzian")
+                    { path.append(ViewEnum.AppInfo) }
+                }
             }
             .navigationTitle("Mafia - Party Game")
+            .padding()
             .navigationDestination(for: ViewEnum.self) { view in
                     switch view {
                     case .Play: PlayView()
@@ -37,7 +54,6 @@ struct MainMenuView: View {
                     case .Fraction: FractionsView()
                     case .User: UserView()
                     case .AppInfo: AppInfoView()
-                    default: CharactersView()
                 }
             }
         }
