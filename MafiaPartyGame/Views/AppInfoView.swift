@@ -11,6 +11,8 @@ struct AppInfoView: View {
     //just for testing
     @Environment(GameState.self) private var gameState
     
+    private let defaults = UserDefaults.standard
+    
     var body: some View {
         // Z stack
         ZStack {
@@ -31,6 +33,7 @@ struct AppInfoView: View {
         }.onTapGesture { // just for testing
             gameState.winner = .Mafia
             gameState.players.append(Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "mafiaBoss"))
+            defaults.set("myValue", forKey: "mySetting")
         }
         
     }
