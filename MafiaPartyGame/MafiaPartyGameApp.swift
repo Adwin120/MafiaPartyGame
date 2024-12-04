@@ -8,6 +8,17 @@
 import SwiftUI
 import SwiftData
 
+//extension EnvironmentValues {
+//    var gameState: GameState {
+//            get { self[GameStateKey.self] }
+//            set { self[GameStateKey.self] = newValue }
+//        }
+//}
+//
+//private struct GameStateKey: EnvironmentKey {
+//    static let defaultValue: GameState = GameState()
+//}
+
 @main
 struct MafiaPartyGameApp: App {
     var sharedModelContainer: ModelContainer = {
@@ -22,10 +33,12 @@ struct MafiaPartyGameApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    @State private var gameState = GameState()
 
     var body: some Scene {
         WindowGroup {
-            MainMenuView()
+            MainMenuView().environment(gameState)
         }
     }
 }

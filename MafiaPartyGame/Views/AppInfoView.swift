@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AppInfoView: View {
+    //just for testing
+    @Environment(GameState.self) private var gameState
+    
     var body: some View {
         // Z stack
         ZStack {
@@ -25,6 +28,9 @@ struct AppInfoView: View {
             .font(.title)
             .bold();
             
+        }.onTapGesture { // just for testing
+            gameState.winner = .Mafia
+            gameState.players.append(Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "mafiaBoss"))
         }
         
     }
