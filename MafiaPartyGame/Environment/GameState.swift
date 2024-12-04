@@ -8,7 +8,7 @@
 import Observation
 
 @Observable class GameState {
-    var players: [Character] = []
+    var players: [Player] = []
     
     var winner: Optional<Fraction> = Optional.none
     var inProgress: Bool {
