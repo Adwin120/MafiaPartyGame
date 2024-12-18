@@ -15,61 +15,68 @@ struct MainMenuView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            VStack(alignment: .leading, spacing: 20) {
-                MenuCardView(
-                    title: "Play",
-                    subtitle: "Mafia",
-                    imageName: "pudzian",
-                    fraction: .Mafia)
-                { path.append(ViewEnum.Play) }
-                MenuCardView(
-                    title: "Characters",
-                    subtitle: "Compedium",
-                    imageName: "pudzian",
-                    fraction: .Mafia)
-                { path.append(ViewEnum.Characters) }
-                MenuCardView(
-                    title: "Fractions",
-                    subtitle: "Compedium",
-                    imageName: "pudzian",
-                    fraction: .Mafia)
-                { path.append(ViewEnum.Fraction) }
-                
-                HStack(alignment: .center, spacing: 20) {
+                VStack(alignment: .leading, spacing: 10) {
                     MenuCardView(
-                        title: "User",
-                        subtitle: "Settings",
-                        imageName: "pudzian",
+                        title: "Play",
+                        subtitle: "Mafia",
+                        imageName: "hunter",
                         fraction: .Mafia)
-                    { path.append(ViewEnum.User) }
+                    { path.append(ViewEnum.Play) }
                     MenuCardView(
-                        title: "App Info",
-                        subtitle: "Settings",
-                        imageName: "pudzian",
+                        title: "Characters",
+                        subtitle: "Compedium",
+                        imageName: "cattani",
                         fraction: .Mafia)
-                    { path.append(ViewEnum.AppInfo) }
+                    { path.append(ViewEnum.Characters) }
+                    MenuCardView(
+                        title: "Fractions",
+                        subtitle: "Compedium",
+                        imageName: "mafiaBoss",
+                        fraction: .Mafia)
+                    { path.append(ViewEnum.Fraction) }
+                    
+                    HStack(alignment: .center, spacing: 20) {
+                        MenuCardView(
+                            title: "User",
+                            subtitle: "Settings",
+                            imageName: "doctor",
+                            fraction: .Mafia)
+                        { path.append(ViewEnum.User) }
+                        MenuCardView(
+                            title: "App Info",
+                            subtitle: "Settings",
+                            imageName: "judge",
+                            fraction: .Mafia)
+                        { path.append(ViewEnum.AppInfo) }
+                    }
                 }
-            }
-            .navigationTitle("Mafia - Party Game")
-            
-            //this can be used to make custom title
-            
-//            .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem(placement: .principal) {
-//                    Text("title").font(.headline)
-//                }
-//            }
-            .padding()
-            .navigationDestination(for: ViewEnum.self) { view in
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("Mafia Party Game")
+                            .font(.custom("AbhayaLibre-Bold", size: 34, relativeTo: .title))
+                            .bold()
+                    }
+                }
+                
+                //this can be used to make custom title
+                
+                //            .navigationBarTitleDisplayMode(.inline)
+                //            .toolbar {
+                //                ToolbarItem(placement: .principal) {
+                //                    Text("title").font(.headline)
+                //                }
+                //            }
+                .padding()
+                .navigationDestination(for: ViewEnum.self) { view in
                     switch view {
                     case .Play: PlayView()
                     case .Characters: CharactersView()
                     case .Fraction: FractionsView()
                     case .User: UserView()
                     case .AppInfo: AppInfoView()
+                    }
                 }
-            }
+            
         }
     }
 }
