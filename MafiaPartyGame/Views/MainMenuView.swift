@@ -35,7 +35,7 @@ struct MainMenuView: View {
                         fraction: .Mafia)
                     { path.append(ViewEnum.Fraction) }
                     
-                    HStack(alignment: .center, spacing: 20) {
+                    HStack(alignment: .center, spacing: 10) {
                         MenuCardView(
                             title: "User",
                             subtitle: "Settings",
@@ -78,6 +78,7 @@ struct MainMenuView: View {
                 }
             
         }
+        .preferredColorScheme(.dark)
     }
 }
 

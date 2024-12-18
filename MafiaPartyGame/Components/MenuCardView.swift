@@ -36,7 +36,7 @@ struct MenuCardView: View {
                                     Color.black.opacity(0.6) // This darkens the image
                                         .clipShape(RoundedRectangle(cornerRadius: 20))
                                 )
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(borderColor, lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(borderColor.opacity(0.7), lineWidth: 2))
                 .shadow(radius: 10)
                 
             Text(title)
