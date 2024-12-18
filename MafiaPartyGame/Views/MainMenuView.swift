@@ -75,5 +75,5 @@ struct MainMenuView: View {
 }
 
 #Preview {
-    MainMenuView()
+    MainMenuView().environment(GameState())
 }

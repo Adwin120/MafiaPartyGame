@@ -15,13 +15,13 @@ struct PlayView: View {
         Text("Play")
         Text(gameState.winner?.displayName ?? "in progress")
         List(gameState.players) { player in
-            Text(player.name)
+            Text(player.character.name)
         }
         Text(defaults.string(forKey: "mySetting") ?? "no value")
     }
 }
 
 #Preview {
-    PlayView()
+    PlayView().environment(GameState())
     
 }

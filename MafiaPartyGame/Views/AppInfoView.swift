@@ -41,5 +41,5 @@ struct AppInfoView: View {
 }
 
 #Preview {
-    AppInfoView()
+    AppInfoView().environment(GameState())
 }
