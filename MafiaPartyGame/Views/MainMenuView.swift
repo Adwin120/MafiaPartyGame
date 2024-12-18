@@ -51,6 +51,15 @@ struct MainMenuView: View {
                 }
             }
             .navigationTitle("Mafia - Party Game")
+            
+            //this can be used to make custom title
+            
+//            .navigationBarTitleDisplayMode(.inline)
+//            .toolbar {
+//                ToolbarItem(placement: .principal) {
+//                    Text("title").font(.headline)
+//                }
+//            }
             .padding()
             .navigationDestination(for: ViewEnum.self) { view in
                     switch view {
