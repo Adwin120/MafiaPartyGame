@@ -33,7 +33,7 @@ struct AppInfoView: View {
         }.onTapGesture { // just for testing
             let loremIpsumCharacter = Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "mafiaBoss")
             gameState.winner = .Mafia
-            gameState.players.append(Player(id: "1", character: loremIpsumCharacter))
+            gameState.players["1"] = Player(id: "1", character: loremIpsumCharacter)
             defaults.set("myValue", forKey: "mySetting")
         }
         

@@ -14,8 +14,8 @@ struct PlayView: View {
     var body: some View {
         Text("Play")
         Text(gameState.winner?.displayName ?? "in progress")
-        List(gameState.players) { player in
-            Text(player.character.name)
+        List(gameState.players.values, id: \.id) { player in
+             Text(player.character.name)
         }
         Text(defaults.string(forKey: "mySetting") ?? "no value")
     }
