@@ -8,5 +8,5 @@
 struct Player: Hashable, Codable, Identifiable {
     var id: String
     var character: Character
-    var isAlive: Bool = true
+    var status: PlayerAliveState = .Alive
 }

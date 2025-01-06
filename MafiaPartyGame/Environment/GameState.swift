@@ -15,27 +15,55 @@ import Observation
     var inProgress: Bool {
         winner == Optional.none
     }
-    
-    func kill(playerId: String) {
-        self.players[playerId]?.isAlive = false
-    }
-    
-    func heal(playerId: String) -> Bool {
-        var player = self.players[playerId].unsafelyUnwrapped
-        var wasAlive = player.isAlive
-        player.isAlive = true
-        return !wasAlive
-    }
-    
-    func newTurn() {
+
+    public func newTurn() {
+        checkWinConditions()
+        // when the day ends doctor can't heal dead anymore, not sure if it's the correct moment in game to do this
+        if phase == .Day0 || phase == .Day { 
+            ensureDead()
+        }       
         self.phase = self.phase.next
-        var countMafia = players.filter {key, player in player.character.fraction == .Mafia}.count
-        if countMafia > players.count / 2 {
+    }
+
+    public func kill(playerId: String) -> Bool {
+        if var player = self.players[playerId], player.status == .Alive {
+            player.status = .RecentlyDeceased
+            self.players[playerId] = player 
+            return true
+        }
+        return false
+    }
+
+    public func heal(playerId: String) -> Bool {
+        if var player = self.players[playerId], player.status == .RecentlyDeceased {
+            player.status = .Alive
+            self.players[playerId] = player 
+            return true
+        }
+        return false
+    }
+
+    private func checkWinConditions() {
+        var notDead = players.filter {_, player in player.status != .Deceased}
+        var aliveMafiaCount = notDead.filter {_, player in player.character.fraction == .Mafia}.count
+
+        if aliveMafiaCount == 0 {
+            self.winner = .Town
+        }
+        if aliveMafiaCount > notDead.count / 2 {
             self.winner = .Mafia
         }
-        if countMafia == 1 && players.count == 2 {
+        if aliveMafiaCount == 1 && notDead.count == 2 {
             self.winner = .Mafia
         }
     }
-    
+
+    private ensureDead() {
+        for (key, var player) in self.players {
+            if player.status == .RecentlyDeceased {
+                player.status = .Deceased
+                gameState.players[key] = player
+            }
+        }
+    }
 }
