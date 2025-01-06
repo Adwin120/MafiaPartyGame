@@ -14,14 +14,13 @@ struct PlayView: View {
     var body: some View {
         Text("Play")
         Text(gameState.winner?.displayName ?? "in progress")
-        List(gameState.players) { player in
-            Text(player.name)
+        List(gameState.playerList) { player in
+            Text(player.character.name)
         }
         Text(defaults.string(forKey: "mySetting") ?? "no value")
     }
 }
 
 #Preview {
-    PlayView()
-    
+    PlayView().environment(GameState())
 }
