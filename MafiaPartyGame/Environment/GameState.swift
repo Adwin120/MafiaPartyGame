@@ -9,7 +9,12 @@ import Observation
 
 @Observable class GameState {
     var players: [String: Player] = [:]
-    var phase: Phase = .Day0
+
+    var playerList: [Player] {
+        Array(players.values)
+    }
+    
+    var phase: Phase = .NightMafia //initial phase is mafias turn I think?
     
     var winner: Optional<Fraction> = Optional.none
     var inProgress: Bool {
@@ -18,16 +23,24 @@ import Observation
 
     public func newTurn() {
         checkWinConditions()
-        // when the day ends doctor can't heal dead anymore, not sure if it's the correct moment in game to do this
-        if phase == .Day0 || phase == .Day { 
+        if phase == .NightDoctor { // after doctors turn
             ensureDead()
-        }       
+        } 
         self.phase = self.phase.next
     }
 
-    public func kill(playerId: String) -> Bool {
+    public func Assassinate(playerId: String) -> Bool {
         if var player = self.players[playerId], player.status == .Alive {
             player.status = .RecentlyDeceased
+            self.players[playerId] = player 
+            return true
+        }
+        return false
+    }
+
+    public func Execute(playerId: String) -> {
+        if var player = self.players[playerId], player.status == .Alive {
+            player.status = .Deceased
             self.players[playerId] = player 
             return true
         }

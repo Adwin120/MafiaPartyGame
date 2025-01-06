@@ -7,16 +7,16 @@
 
 enum Phase: Hashable, Codable {
     case Day
-    case Night
-    case Day0
-    case Night0
+    case NightMafia
+    case NightDetective
+    case NightDoctor
     
     var next: Phase {
         switch self {
-        case .Day0: .Night0
-        case .Night0: .Day
-        case .Day: .Night
-        case .Night: .Day
+        case .Day: .NightMafia
+        case .NightMafia: .NightDetective
+        case .NightDetective: .NightDoctor
+        case .NightDoctor: .Day
         }
     }
 }
