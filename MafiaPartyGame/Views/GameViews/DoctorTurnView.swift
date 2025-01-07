@@ -7,19 +7,17 @@
 
 import SwiftUI
 
-struct MafiaTurnView: View {
+struct DoctorTurnView: View {
     @Environment(GameState.self) private var gameState
     // for testing purposes changes of game state are in app info :)
     var defaults = UserDefaults.standard
     var body: some View {
-        Text("Mafia Turn")
+        Text("Doctor Turn")
             .font(.custom("AbhayaLibre-Bold", size: 34, relativeTo: .title))
             .bold()
-        Text("Select Player to eliminate")
+        Text("Select Player to heal")
             .font(.custom("AbhayaLibre-Regular", size: 20, relativeTo: .title))
-            
-       
-        List(gameState.playerList.filter {$0.status == .Alive}) { player in
+        List(gameState.playerList) { player in
             ZStack(alignment: .leading) {
                 Image(player.character.image)
                     .resizable()
@@ -27,7 +25,7 @@ struct MafiaTurnView: View {
                     .frame(height: 70)
                     .overlay(Color.black.opacity(0.6))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(.red, lineWidth: 2))
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(.blue, lineWidth: 2))
                 VStack(alignment: .leading) {
                     Text(player.name)
                         .font(.custom("AbhayaLibre-Bold", size: 20, relativeTo: .title))
@@ -39,15 +37,12 @@ struct MafiaTurnView: View {
                         .foregroundColor(Color(UIColor.systemGray4))
                 }.padding()
             }
-            .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
             .onTapGesture {
                 print("Player tapped")
-                withAnimation(.easeInOut(duration: 1)) {
-                    gameState.Assassinate(playerId: player.id)
-                    // go to next turn
-                }
-                    
+                // select player to heal
+                // go to next turn
             }
+            .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
         }
         .listStyle(.inset)
 
@@ -55,5 +50,5 @@ struct MafiaTurnView: View {
 }
 
 #Preview {
-    MafiaTurnView().environment(GameState())
+    DoctorTurnView().environment(GameState())
 }
