@@ -11,9 +11,11 @@ import SwiftUI
 
 struct MainMenuView: View {
     
-    @State var path: NavigationPath = NavigationPath()
     @Environment(GameState.self) private var gameState
     @State var navigateToMafiaWin = true
+    
+    @StateObject var navigationManager = NavigationManager()
+
     
     
 
@@ -24,26 +26,26 @@ struct MainMenuView: View {
 //                } else if gameState.winner == .Town {
 //        path.append(ViewEnum.TownWin)
 //    }
-        NavigationStack(path: $path) {
+        NavigationStack(path: $navigationManager.navigationPath) {
                 VStack(alignment: .leading, spacing: 10) {
                     MenuCardView(
                         title: "Play",
                         subtitle: "Mafia",
                         imageName: "hunter",
                         fraction: .Mafia)
-                    { path.append(ViewEnum.Play) }
+                    { navigationManager.navigationPath.append(ViewEnum.Play) }
                     MenuCardView(
                         title: "Characters",
                         subtitle: "Compedium",
                         imageName: "cattani",
                         fraction: .Mafia)
-                    { path.append(ViewEnum.Characters) }
+                    { navigationManager.navigationPath.append(ViewEnum.Characters) }
                     MenuCardView(
                         title: "Fractions",
                         subtitle: "Compedium",
                         imageName: "mafiaBoss",
                         fraction: .Mafia)
-                    { path.append(ViewEnum.Fraction) }
+                    { navigationManager.navigationPath.append(ViewEnum.Fraction) }
                     
                     HStack(alignment: .center, spacing: 10) {
                         MenuCardView(
@@ -51,13 +53,13 @@ struct MainMenuView: View {
                             subtitle: "Settings",
                             imageName: "doctor",
                             fraction: .Mafia)
-                        { path.append(ViewEnum.User) }
+                        { navigationManager.navigationPath.append(ViewEnum.User) }
                         MenuCardView(
                             title: "App Info",
                             subtitle: "Settings",
                             imageName: "judge",
                             fraction: .Mafia)
-                        { path.append(ViewEnum.AppInfo) }
+                        { navigationManager.navigationPath.append(ViewEnum.AppInfo) }
                     }
                 }
                 .toolbar {
@@ -93,7 +95,16 @@ struct MainMenuView: View {
                             }
             
         }
+        .environmentObject(navigationManager)
         .preferredColorScheme(.dark)
+    }
+}
+
+class NavigationManager: ObservableObject {
+    @Published var navigationPath = NavigationPath()
+    
+    func resetToRoot() {
+        navigationPath = NavigationPath() // Clear all paths to go back to the root
     }
 }
 

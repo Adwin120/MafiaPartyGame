@@ -9,13 +9,14 @@ import SwiftUI
 
 struct TownWinView: View {
     @Environment(\.presentationMode) var presentationMode // Environment to dismiss or go back
+    @EnvironmentObject var navigationManager: NavigationManager
 
     
     private let defaults = UserDefaults.standard
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Mafia Wins!")
+            Text("Town Wins!")
                 .font(.custom("AbhayaLibre-Bold", size: 34, relativeTo: .title))
                 .bold()
             Image("cattani")
@@ -32,7 +33,7 @@ struct TownWinView: View {
                 
             Button(action: {
                         print("Go back to Menu")
-                presentationMode.wrappedValue.dismiss()
+                navigationManager.resetToRoot()
                     }) {
                         Text("Go back to Menu") // Text
                             .font(.custom("AbhayaLibre-Bold", size: 20, relativeTo: .title)) // Font size

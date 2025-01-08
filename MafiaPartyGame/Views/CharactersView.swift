@@ -20,7 +20,7 @@ struct CharactersView: View {
                     .frame(height: 70)
                     .overlay(Color.black.opacity(0.6))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(character.fraction.color, lineWidth: 2))
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(character.fraction.color, lineWidth: 2).opacity(0.5))
                 
                 NavigationLink(value: character) {
                     VStack(alignment: .leading) {

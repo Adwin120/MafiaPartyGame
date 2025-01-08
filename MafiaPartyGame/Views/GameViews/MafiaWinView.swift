@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MafiaWinView: View {
     @Environment(\.presentationMode) var presentationMode // Environment to dismiss or go back
+    @EnvironmentObject var navigationManager: NavigationManager
 
     
     private let defaults = UserDefaults.standard
@@ -32,7 +33,7 @@ struct MafiaWinView: View {
                 
             Button(action: {
                         print("Go back to Menu")
-                presentationMode.wrappedValue.dismiss()
+                navigationManager.resetToRoot()
                     }) {
                         Text("Go back to Menu") // Text
                             .font(.custom("AbhayaLibre-Bold", size: 20, relativeTo: .title)) // Font size

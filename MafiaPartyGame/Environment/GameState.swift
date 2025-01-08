@@ -88,12 +88,10 @@ import Foundation
             if aliveMafiaCount > notDead.count / 2 {
                 self.winner = .Mafia
                 print("Mafia wins")
-                onWinConditionMet?(.Mafia)
             }
             if aliveMafiaCount == 1 && notDead.count == 2 {
                 self.winner = .Mafia
                 print("Mafia wins")
-                onWinConditionMet?(.Mafia)
             }
         }
 
