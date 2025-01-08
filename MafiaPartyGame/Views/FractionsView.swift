@@ -15,11 +15,62 @@ struct FractionsView: View {
     
     var body: some View {
         List(fractions) {fraction in
-            NavigationLink(fraction.displayName, value: fraction).background(fraction.color)
+            if fraction == .Mafia {
+                ZStack {
+                    Image("mafiaBoss")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 300)
+                        .frame(maxWidth: .infinity)
+                        .clipped()
+                        .overlay(Color.black.opacity(0.6))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(fraction.color, lineWidth: 2))
+                    
+                    NavigationLink(value: fraction) {
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            Text(fraction.displayName)
+                                .font(.custom("AbhayaLibre-Bold", size: 42, relativeTo: .title))
+                                .bold()
+                                .foregroundColor(.white)
+                            
+                        }
+                    }.padding()
+                }
+                
+            } else if fraction == .Town { // Town
+                ZStack {
+                    Image("doctor")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 300)
+                        .frame(maxWidth: .infinity)
+                        .clipped()
+                        .overlay(Color.black.opacity(0.6))
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(fraction.color, lineWidth: 2))
+                    
+                    NavigationLink(value: fraction) {
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            Text(fraction.displayName)
+                                .font(.custom("AbhayaLibre-Bold", size: 42, relativeTo: .title))
+                                .bold()
+                                .foregroundColor(.white)
+                        }
+                        .padding()
+                    }
+                }
+            }
+            
         }
+        
         .navigationDestination(for: Fraction.self) {
             fraction in FractionDetailView(fraction: fraction)
         }
+        .listStyle(.inset)
+        .navigationTitle("Fractions")
     }
 }
 

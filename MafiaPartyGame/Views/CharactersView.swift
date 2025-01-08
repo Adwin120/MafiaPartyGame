@@ -9,10 +9,7 @@ import SwiftUI
 
 struct CharactersView: View {
     
-    @State var characters: [Character] = [
-        Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "mafiaBoss"),
-        Character(id: 2, name: "Detective", descriptionText: "Mariusz Pudzianowski", fraction: .Town, image: "cattani")
-    ]
+    @State var characters: [Character] = Characters.all
     
     var body: some View {
         List(characters) {character in

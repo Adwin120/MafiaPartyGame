@@ -11,14 +11,14 @@ struct MafiaTurnView: View {
     @Environment(GameState.self) private var gameState
     // for testing purposes changes of game state are in app info :)
     var defaults = UserDefaults.standard
+    @State private var navigateToDoctorTurn = false // State for navigation
     var body: some View {
         Text("Mafia Turn")
             .font(.custom("AbhayaLibre-Bold", size: 34, relativeTo: .title))
             .bold()
         Text("Select Player to eliminate")
             .font(.custom("AbhayaLibre-Regular", size: 20, relativeTo: .title))
-            
-       
+        
         List(gameState.playerList.filter {$0.status == .Alive}) { player in
             ZStack(alignment: .leading) {
                 Image(player.character.image)
@@ -41,15 +41,19 @@ struct MafiaTurnView: View {
             }
             .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
             .onTapGesture {
-                print("Player tapped")
                 withAnimation(.easeInOut(duration: 1)) {
-                    gameState.Assassinate(playerId: player.id)
+                    gameState.assassinate(playerId: player.id)
+                    navigateToDoctorTurn = true
+                    
                     // go to next turn
                 }
                     
             }
         }
         .listStyle(.inset)
+        NavigationLink(destination: DoctorTurnView(), isActive: $navigateToDoctorTurn) {
+                            EmptyView()
+                        }
 
     }
 }

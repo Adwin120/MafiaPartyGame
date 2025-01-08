@@ -14,28 +14,10 @@ struct AppInfoView: View {
     private let defaults = UserDefaults.standard
     
     var body: some View {
-        // Z stack
-        ZStack {
-            // background image with height 200 and full width
-            
-            
-            Image("pudzian")
-                .resizable()
-                                .scaledToFill()
-                                .frame(height: 200)
-                                .frame(maxWidth: .infinity)
-                                .clipped()
-            
-                Text("App Info")
-            .font(.title)
-            .bold();
-            
-        }.onTapGesture { // just for testing
-            let loremIpsumCharacter = Character(id: 1, name: "Mafia Boss", descriptionText: "lorem ipsum", fraction: .Mafia, image: "mafiaBoss")
-            gameState.winner = .Mafia
-            gameState.playerList.append(Player(id: "1", character: loremIpsumCharacter))
-            defaults.set("myValue", forKey: "mySetting")
-        }
+        Text("App info view")
+            .font(.custom("AbhayaLibre-Bold", size: 34, relativeTo: .title))
+            .bold()
+        
         
     }
 }

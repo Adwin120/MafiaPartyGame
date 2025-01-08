@@ -7,6 +7,7 @@
 
 struct Player: Hashable, Codable, Identifiable {
     var id: String
+    var name: String
     var character: Character
     var status: PlayerAliveState = .Alive
 }

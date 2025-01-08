@@ -12,8 +12,18 @@ import SwiftUI
 struct MainMenuView: View {
     
     @State var path: NavigationPath = NavigationPath()
+    @Environment(GameState.self) private var gameState
+    @State var navigateToMafiaWin = true
+    
+    
 
     var body: some View {
+        
+//                if gameState.winner == .Mafia {
+//                    path.append(ViewEnum.MafiaWin)
+//                } else if gameState.winner == .Town {
+//        path.append(ViewEnum.TownWin)
+//    }
         NavigationStack(path: $path) {
                 VStack(alignment: .leading, spacing: 10) {
                     MenuCardView(
@@ -69,13 +79,18 @@ struct MainMenuView: View {
                 .padding()
                 .navigationDestination(for: ViewEnum.self) { view in
                     switch view {
-                    case .Play: PlayView()
+                    case .Play: GameSetupView()
                     case .Characters: CharactersView()
                     case .Fraction: FractionsView()
                     case .User: UserView()
                     case .AppInfo: AppInfoView()
+                    case .MafiaWin: MafiaWinView()
+                    case .TownWin: TownWinView()
                     }
                 }
+            NavigationLink(destination: MafiaWinView(), isActive: $navigateToMafiaWin) {
+                                EmptyView()
+                            }
             
         }
         .preferredColorScheme(.dark)

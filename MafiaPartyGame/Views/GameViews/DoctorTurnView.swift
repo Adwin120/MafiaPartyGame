@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DoctorTurnView: View {
     @Environment(GameState.self) private var gameState
+    @State private var navigateToCattaniTurn = false
     // for testing purposes changes of game state are in app info :)
     var defaults = UserDefaults.standard
     var body: some View {
@@ -38,13 +39,17 @@ struct DoctorTurnView: View {
                 }.padding()
             }
             .onTapGesture {
-                print("Player tapped")
                 // select player to heal
                 // go to next turn
+                gameState.heal(playerId: player.id)
+                navigateToCattaniTurn = true
             }
             .listRowInsets(EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))
         }
         .listStyle(.inset)
+        NavigationLink(destination: CattaniTurnView(), isActive: $navigateToCattaniTurn) {
+                            EmptyView()
+                        }
 
     }
 }

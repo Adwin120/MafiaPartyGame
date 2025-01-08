@@ -11,6 +11,7 @@ struct CattaniTurnView: View {
     @Environment(GameState.self) private var gameState
     @State private var showAlert = false
     @State private var selectedPlayer: Player?
+    @State private var navigateToDayView = false
     // for testing purposes changes of game state are in app info :)
     var defaults = UserDefaults.standard
     var body: some View {
@@ -41,7 +42,6 @@ struct CattaniTurnView: View {
                 }.padding()
             }
             .onTapGesture {
-                print("Player tapped")
                 selectedPlayer = player
                 showAlert = true
             }
@@ -53,10 +53,15 @@ struct CattaniTurnView: View {
                             ),
                   dismissButton: .default(Text("OK")) {
                 // go to next view
+                gameState.newTurn()
+                navigateToDayView = true
             }
             
             )
         }
+        NavigationLink(destination: DayView(), isActive: $navigateToDayView) {
+                            EmptyView()
+                        }
 }
     
 }
