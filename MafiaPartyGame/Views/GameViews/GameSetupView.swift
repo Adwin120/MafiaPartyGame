@@ -28,6 +28,7 @@ struct GameSetupView: View {
                     Text("Add Player")
                     Spacer()
                 }
+                .accessibilityIdentifier("Add player")
                 .buttonStyle(PlainButtonStyle())
                 
                 List(gameState.playerList) { player in

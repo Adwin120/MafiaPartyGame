@@ -45,6 +45,16 @@ struct MenuCardView: View {
                 .foregroundColor(.white)
                 .padding(.leading, 20)
                 .padding(.bottom, 10)
+            Button(action: {
+                onTap()
+            }) {
+                Text("some text")
+            }
+            .opacity(0)
+            .accessibilityIdentifier(title)
+            .accessibilityAction(named: "some magic"){
+                onTap()
+            }
             Text(subtitle)
                 .font(.custom("AbhayaLibre-Regular", size: 16, relativeTo: .subheadline))
                 .foregroundColor(.white)
