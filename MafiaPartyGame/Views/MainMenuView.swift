@@ -27,6 +27,14 @@ struct MainMenuView: View {
 //        path.append(ViewEnum.TownWin)
 //    }
         NavigationStack(path: $navigationManager.navigationPath) {
+                Button(action: {
+                    navigationManager.navigationPath.append(ViewEnum.Play)
+                }) {
+                    Text("play")
+                }
+                .opacity(0)
+                .accessibilityIdentifier("accessibilityPlay")
+                
                 VStack(alignment: .leading, spacing: 10) {
                     MenuCardView(
                         title: "Play",

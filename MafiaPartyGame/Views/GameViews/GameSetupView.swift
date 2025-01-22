@@ -40,6 +40,7 @@ struct GameSetupView: View {
                             .overlay(Color.black.opacity(0.6))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .overlay(RoundedRectangle(cornerRadius: 8).stroke(player.character.fraction.color, lineWidth: 2))
+                            .accessibilityIdentifier(player.name)
                         VStack(alignment: .leading) {
                             Text(player.name)
                                 .font(.custom("AbhayaLibre-Bold", size: 20, relativeTo: .title))

@@ -21,8 +21,8 @@ final class MafiaPartyGameUITests: XCTestCase {
         app = XCUIApplication()
         app.launch()
         
-        let playButton = app.buttons["Play"]
-        playButton.accessibilityPerformMagicTap()
+        let playButton = app.buttons["accessibilityPlay"]
+        playButton.tap()
     }
 
     override func tearDownWithError() throws {
@@ -34,14 +34,17 @@ final class MafiaPartyGameUITests: XCTestCase {
     func testAddPlayer() throws {
         let addButton = app.buttons["Add player"]
         XCTAssert(addButton.exists && addButton.isEnabled && addButton.isHittable)
+        addButton.tap()
+        let picker = app.findPicker()
+        picker.selectValue(Characters.all[0])
+        let nameField = app.findTextField(withPlaceholder: "Player Name")
+        nameField.text = "test player"
+        let submitButton = app.findButton(containingText: "Add")
+        XCTAssert(app.images["test player"].exists)
+
     }
     @MainActor
     func testCantAddUnnamedPlayer() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         
     }
