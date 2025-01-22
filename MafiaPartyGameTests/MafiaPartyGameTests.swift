@@ -21,7 +21,7 @@ struct MafiaPartyGameTests {
     @Test func doctorCantHealExecutedPlayer() async throws {
         let gameState = GameState()
         #expect(gameState.execute(playerId: "1"))
-        #expect(gameState.players["1"] == Some.none) // expect not to be there
+        #expect(gameState.players["1"] == Optional.none) // expect not to be there
         #expect(!gameState.heal(playerId: "1"))
     }
     @Test func doctorCantHealInNextTurn() async throws {
